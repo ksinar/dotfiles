@@ -11,6 +11,9 @@ export ZSH="/home/kaan/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="ys"
 ZSH_THEME="xiong-chiamiov-plus"
+#ZSH_THEME="minimal"
+#ZSH_THEME="cloud"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
