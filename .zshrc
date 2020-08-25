@@ -105,7 +105,20 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias p="sudo pacman"
 alias y="yay"
 alias l.='ls -d .* --color=auto'
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+#alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip="curl ipinfo.io"
 alias ports='sudo netstat -tulanp'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias ls='exa --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias l.='exa -a | egrep "^\."'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias cp="cp -i"
+alias df='df -h'
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 #dotfiles
 alias config='/usr/bin/git --git-dir=/home/kaan/.cfg/ --work-tree=/home/kaan'
