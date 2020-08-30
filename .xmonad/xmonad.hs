@@ -72,7 +72,7 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
--- hack to let firefox fullscreen
+-- hack to let vivaldi-stable fullscreen
 setFullscreenSupport :: X ()
 setFullscreenSupport = withDisplay $ \dpy -> do
     r <- asks theRoot
@@ -98,10 +98,10 @@ myModMask :: KeyMask
 myModMask = mod4Mask       -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "urxvt"   -- Sets default terminal
+myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "firefox"               -- Sets firefox as browser for tree select
+myBrowser = "vivaldi-stable"               -- Sets firefox as browser for tree select
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
 myEditor :: String
@@ -130,8 +130,8 @@ myStartupHook = do
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
           --spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x292d3e --height 22 &"
-          spawnOnce "trayer --edge top --align center --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x292d3e --height 22 &"
-          spawnOnce "/usr/bin/emacs --daemon &"
+          --spawnOnce "trayer --edge top --align center --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x292d3e --height 22 &"
+          -- spawnOnce "/usr/bin/emacs --daemon &"
           -- spawnOnce "kak -d -s mysession &"
           setWMName "LG3D"
           setFullscreenSupport
@@ -169,7 +169,7 @@ spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
 myAppGrid = [ ("Audacity", "audacity")
                  , ("Deadbeef", "deadbeef")
                  , ("Emacs", "emacsclient -c -a emacs")
-                 , ("Firefox", "firefox")
+                 , ("Firefox", "vivaldi-stable")
                  , ("Geany", "geany")
                  , ("Geary", "geary")
                  , ("Gimp", "gimp")
@@ -206,11 +206,11 @@ treeselectAction a = TS.treeselectAction a
        , Node (TS.TSNode "Simple Scan" "A simple scanning program" (spawn "simple-scan")) []
        ]
    , Node (TS.TSNode "+ Internet" "internet and web programs" (return ()))
-       [ Node (TS.TSNode "Brave" "A privacy-oriented web browser" (spawn "firefox")) []
+       [ Node (TS.TSNode "Brave" "A privacy-oriented web browser" (spawn "vivaldi-stable")) []
        , Node (TS.TSNode "Discord" "Chat and video chat platform" (spawn "discord")) []
        , Node (TS.TSNode "Elfeed" "An Emacs RSS feed reader" (spawn "xxx")) []
        , Node (TS.TSNode "FileZilla" "An FTP client" (spawn "filezilla")) []
-       , Node (TS.TSNode "Firefox" "Open source web browser" (spawn "firefox")) []
+       , Node (TS.TSNode "Firefox" "Open source web browser" (spawn "vivaldi-stable")) []
        , Node (TS.TSNode "Geary" "Email client with a nice UI" (spawn "geary")) []
        , Node (TS.TSNode "Jitsi" "Open source video chat" (spawn "xxx")) []
        , Node (TS.TSNode "Mu4e" "An Emacs email client" (spawn "xxx")) []
@@ -675,11 +675,11 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
              where
                -- I've commented out the layouts I don't use.
                myDefaultLayout =     tall
-                                 ||| magnify
-                                 ||| noBorders monocle
+                                 -- ||| magnify
+                                 -- ||| noBorders monocle
+                                 ||| noBorders tabs
                                  ||| floats
                                  ||| grid
-                                 ||| noBorders tabs
                                  ||| spirals
                                  -- ||| threeCol
                                  -- ||| threeRow
@@ -705,14 +705,14 @@ myManageHook = composeAll
      -- I'm doing it this way because otherwise I would have to write out
      -- the full name of my workspaces.
      [ className =? "obs"     --> doShift ( myWorkspaces !! 7 )
-     , title =? "firefox"     --> doShift ( myWorkspaces !! 1 )
+     , title =? "vivaldi-stable"     --> doShift ( myWorkspaces !! 1 )
      , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
      , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
      , className =? "Gimp"    --> doFloat
      , title =? "Oracle VM VirtualBox Manager"     --> doFloat
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
-     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , (className =? "vivaldi-stable" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      ] <+> namedScratchpadManageHook myScratchPads
 
 myLogHook :: X ()
@@ -725,6 +725,7 @@ myKeys =
         [ ("M-C-r", spawn "xmonad --recompile")      -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")        -- Restarts xmonad
         , ("M-S-q", io exitSuccess)                  -- Quits xmonad
+        , ("M-S-l", spawn "slock")                     -- Locks screen 
 
     -- Open my preferred terminal
         , ("M-<Return>", spawn myTerminal)
@@ -748,11 +749,11 @@ myKeys =
     -- Grid Select (CTRL-g followed by a key)
         , ("C-g g", spawnSelected' myAppGrid)                 -- grid select favorite apps
         , ("C-M1-g", spawnSelected' myAppGrid)                -- grid select favorite apps
-        , ("C-g t", goToSelected $ mygridConfig myColorizer)  -- goto selected window
+        , ("M1-<Tab>", goToSelected $ mygridConfig myColorizer)  -- goto selected window
         , ("C-g b", bringSelected $ mygridConfig myColorizer) -- bring selected window
 
     -- Tree Select/
-        , ("C-t t", treeselectAction tsDefaultConfig)
+        , ("C-S-t t", treeselectAction tsDefaultConfig)
 
     -- Windows navigation
         , ("M-m", windows W.focusMaster)     -- Move focus to the master window
@@ -839,8 +840,8 @@ myKeys =
         , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
         , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
         , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 10%-")
-        , ("<XF86HomePage>", spawn "firefox")
-        , ("<XF86Search>", safeSpawn "firefox" ["https://www.google.com/"])
+        , ("<XF86HomePage>", spawn "vivaldi-stable")
+        , ("<XF86Search>", safeSpawn "vivaldi-stable" ["https://www.google.com/"])
         , ("<XF86Mail>", runOrRaise "geary" (resource =? "thunderbird"))
         , ("<XF86Calculator>", runOrRaise "gcalctool" (resource =? "gcalctool"))
         , ("<XF86Eject>", spawn "toggleeject")
