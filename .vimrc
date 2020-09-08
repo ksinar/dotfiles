@@ -30,7 +30,7 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'preservim/nerdtree'
 
-Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 
 " Themes"
 Plugin 'dracula/vim', { 'name': 'dracula' }
