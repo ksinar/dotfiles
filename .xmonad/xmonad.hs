@@ -71,8 +71,9 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
+import XMonad.Util.Cursor
 
--- hack to let vivaldi-stable fullscreen
+-- hack to let vivaldi fullscreen
 setFullscreenSupport :: X ()
 setFullscreenSupport = withDisplay $ \dpy -> do
     r <- asks theRoot
@@ -101,7 +102,7 @@ myTerminal :: String
 myTerminal = "alacritty"   -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "vivaldi-stable"               -- Sets firefox as browser for tree select
+myBrowser = "vivaldi"               -- Sets firefox as browser for tree select
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
 myEditor :: String
@@ -135,6 +136,7 @@ myStartupHook = do
           -- spawnOnce "kak -d -s mysession &"
           setWMName "LG3D"
           setFullscreenSupport
+          setDefaultCursor xC_left_ptr
 
 myColorizer :: Window -> Bool -> X (String, String)
 myColorizer = colorRangeFromClassName
@@ -169,7 +171,7 @@ spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
 myAppGrid = [ ("Audacity", "audacity")
                  , ("Deadbeef", "deadbeef")
                  , ("Emacs", "emacsclient -c -a emacs")
-                 , ("Firefox", "vivaldi-stable")
+                 , ("Firefox", "vivaldi")
                  , ("Geany", "geany")
                  , ("Geary", "geary")
                  , ("Gimp", "gimp")
@@ -206,11 +208,11 @@ treeselectAction a = TS.treeselectAction a
        , Node (TS.TSNode "Simple Scan" "A simple scanning program" (spawn "simple-scan")) []
        ]
    , Node (TS.TSNode "+ Internet" "internet and web programs" (return ()))
-       [ Node (TS.TSNode "Brave" "A privacy-oriented web browser" (spawn "vivaldi-stable")) []
+       [ Node (TS.TSNode "Brave" "A privacy-oriented web browser" (spawn "vivaldi")) []
        , Node (TS.TSNode "Discord" "Chat and video chat platform" (spawn "discord")) []
        , Node (TS.TSNode "Elfeed" "An Emacs RSS feed reader" (spawn "xxx")) []
        , Node (TS.TSNode "FileZilla" "An FTP client" (spawn "filezilla")) []
-       , Node (TS.TSNode "Firefox" "Open source web browser" (spawn "vivaldi-stable")) []
+       , Node (TS.TSNode "Firefox" "Open source web browser" (spawn "vivaldi")) []
        , Node (TS.TSNode "Geary" "Email client with a nice UI" (spawn "geary")) []
        , Node (TS.TSNode "Jitsi" "Open source video chat" (spawn "xxx")) []
        , Node (TS.TSNode "Mu4e" "An Emacs email client" (spawn "xxx")) []
@@ -705,14 +707,14 @@ myManageHook = composeAll
      -- I'm doing it this way because otherwise I would have to write out
      -- the full name of my workspaces.
      [ className =? "obs"     --> doShift ( myWorkspaces !! 7 )
-     , title =? "vivaldi-stable"     --> doShift ( myWorkspaces !! 1 )
+     , title =? "vivaldi"     --> doShift ( myWorkspaces !! 1 )
      , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
      , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
      , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
      , className =? "Gimp"    --> doFloat
      , title =? "Oracle VM VirtualBox Manager"     --> doFloat
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
-     , (className =? "vivaldi-stable" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+     , (className =? "vivaldi" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      ] <+> namedScratchpadManageHook myScratchPads
 
 myLogHook :: X ()
@@ -840,8 +842,8 @@ myKeys =
         , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
         , ("<XF86MonBrightnessUp>", spawn "brightnessctl set +10%")
         , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 10%-")
-        , ("<XF86HomePage>", spawn "vivaldi-stable")
-        , ("<XF86Search>", safeSpawn "vivaldi-stable" ["https://www.google.com/"])
+        , ("<XF86HomePage>", spawn "vivaldi")
+        , ("<XF86Search>", safeSpawn "vivaldi" ["https://www.google.com/"])
         , ("<XF86Mail>", runOrRaise "geary" (resource =? "thunderbird"))
         , ("<XF86Calculator>", runOrRaise "gcalctool" (resource =? "gcalctool"))
         , ("<XF86Eject>", spawn "toggleeject")
