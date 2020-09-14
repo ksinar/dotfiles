@@ -10,8 +10,8 @@ export ZSH="/home/kaan/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="ys"
-ZSH_THEME="xiong-chiamiov-plus"
-#ZSH_THEME="minimal"
+#ZSH_THEME="xiong-chiamiov-plus"
+ZSH_THEME="minimal"
 #ZSH_THEME="cloud"
 
 
@@ -122,3 +122,4 @@ alias df='df -h'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 #dotfiles
 alias config='/usr/bin/git --git-dir=/home/kaan/.cfg/ --work-tree=/home/kaan'
+alias notion='$HOME/Downloads/lotion/Lotion/Lotion'

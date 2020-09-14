@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 30 
-    y: 30
+    x: 40 
+    y: 40
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -117,10 +117,10 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Fira Code
+    family: TerminessTTF Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Medium
 
   # Bold font face
   bold:
@@ -136,7 +136,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Fira Code
+    family: TerminessTTF Nerd Font Mono 
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -155,7 +155,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Fira Code
+    family: TerminessTTF Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -180,7 +180,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 14
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -214,59 +214,33 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night Bright)
 colors:
   # Default colors
   primary:
-    background: '0x292d3e'
-    foreground: '0xbbc5ff'
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  selection:
-    text: '0x292d3e'
-    background: '0xbbc5ff'
+    background: '0x0c0d0e'
+    foreground: '0xb7b8b9'
 
   # Normal colors
   normal:
-    black:   '0x292d3e'
-    red:     '0xf07178'
-    green:   '0xc3e88d'
-    yellow:  '0xffcb6b'
-    blue:    '0x82aaff'
-    magenta: '0xc792ea'
-    cyan:    '0x89ddff'
-    white:   '0xd0d0d0'
+    black:   '0x0c0d0e'
+    red:     '0xe31a1c'
+    green:   '0x31a354'
+    yellow:  '0xdca060'
+    blue:    '0x3182bd'
+    magenta: '0x756bb1'
+    cyan:    '0x80b1d3'
+    white:   '0xb7b8b9'
 
   # Bright colors
   bright:
-    black:   '0x434758'
-    red:     '0xff8b92'
-    green:   '0xddffa7'
-    yellow:  '0xffe585'
-    blue:    '0x9cc4ff'
-    magenta: '0xe1acff'
-    cyan:    '0xa3f7ff'
-    white:   '0xffffff'
+    black:   '0x737475'
+    red:     '0xe31a1c'
+    green:   '0x31a354'
+    yellow:  '0xdca060'
+    blue:    '0x3182bd'
+    magenta: '0x756bb1'
+    cyan:    '0x80b1d3'
+    white:   '0xfcfdfe'
 
   # Dim colors
   #
@@ -322,8 +296,8 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-#background_opacity: 1.0
-background_opacity: 0.9
+background_opacity: 1.0
+#background_opacity: 0.9
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
