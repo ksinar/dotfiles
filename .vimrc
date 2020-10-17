@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-setlocal tabstop=4
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -30,10 +29,9 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'preservim/nerdtree'
 
-" Plugin 'ycm-core/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 
 " Themes"
-Plugin 'dracula/vim', { 'name': 'dracula' }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -51,11 +49,16 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 let g:airline_theme='deus'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 syntax on
 set number
 set relativenumber
-" colorscheme dracula
+set autoindent
+set expandtab
+set softtabstop=4
+set shiftwidth=4
 
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
