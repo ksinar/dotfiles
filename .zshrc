@@ -8,10 +8,10 @@ export ZSH="/home/kaan/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="ys"
 #ZSH_THEME="xiong-chiamiov-plus"
-ZSH_THEME="minimal"
+#ZSH_THEME="minimal"
 #ZSH_THEME="cloud"
 
 
@@ -102,8 +102,8 @@ export ARCHFLAGS="-arch x86_64"
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-#alias p="sudo pacman"
-#alias y="yay"
+alias p="sudo pacman"
+alias y="yay"
 alias l.='ls -d .* --color=auto'
 #alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias myip="curl ipinfo.io"
@@ -121,5 +121,5 @@ alias cp="cp -i"
 alias df='df -h'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 #dotfiles
-alias config='/usr/bin/git --git-dir=/home/kaan/.cfg/ --work-tree=/home/kaan'
-alias notion='$HOME/Downloads/lotion/Lotion/Lotion'
+#alias config='/usr/bin/git --git-dir=/home/kaan/.cfg/ --work-tree=/home/kaan'
+#alias notion='$HOME/Downloads/lotion/Lotion/Lotion'
